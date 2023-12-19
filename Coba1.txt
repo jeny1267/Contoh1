@@ -1,1 +1,72 @@
-contoh
+class Node:
+    def __init__(self, nama, usia):
+        self.nama = nama
+        self.usia = usia
+        self.left = None
+        self.right = None
+
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+
+    def tambah_penduduk(self, nama, usia):
+        self.root = self._tambah_penduduk(self.root, nama, usia)
+
+    def _tambah_penduduk(self, root, nama, usia):
+        if root is None:
+            return Node(nama, usia)
+        if nama < root.nama:
+            root.left = self._tambah_penduduk(root.left, nama, usia)
+        else:
+            root.right = self._tambah_penduduk(root.right, nama, usia)
+        return root
+
+    def tampilkan_urut_nama(self):
+        self._tampilkan_urut_nama(self.root)
+
+    def _tampilkan_urut_nama(self, root):
+        if root:
+            self._tampilkan_urut_nama(root.left)
+            print(f"{root.nama} - {root.usia} tahun")
+            self._tampilkan_urut_nama(root.right)
+
+    def tampilkan_urut_usia(self):
+        self._tampilkan_urut_usia(self.root)
+
+    def _tampilkan_urut_usia(self, root):
+        if root:
+            self._tampilkan_urut_usia(root.left)
+            print(f"{root.nama} - {root.usia} tahun")
+            self._tampilkan_urut_usia(root.right)
+
+# Main program
+tree = BinaryTree()
+
+while True:
+    print("Pilih Menu:")
+    print("1. Tambah Penduduk")
+    print("2. Tampilkan Urut Nama")
+    print("3. Tampilkan Urut Usia")
+    print("4. Keluar")
+    
+    pilihan = int(input("Pilihan Anda: "))
+
+    if pilihan == 1:
+        nama = input("Masukkan Nama: ")
+        usia = int(input("Masukkan Usia: "))
+        tree.tambah_penduduk(nama, usia)
+        print("Data berhasil ditambahkan!")
+
+    elif pilihan == 2:
+        print("Daftar Penduduk:")
+        tree.tampilkan_urut_nama()
+
+    elif pilihan == 3:
+        print("Daftar Penduduk:")
+        tree.tampilkan_urut_usia()
+
+    elif pilihan == 4:
+        break
+
+    else:
+        print("Pilihan tidak valid. Silakan coba lagi.")
