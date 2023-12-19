@@ -112,3 +112,86 @@ Chandra - 2.5
 Agus - 2.75
 
 
+
+
+class Node:
+    def __init__(self, nama, ipk):
+        self.nama = nama
+        self.ipk = ipk
+        self.left = None
+        self.right = None
+
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+
+    def tambah_mahasiswa(self, nama, ipk):
+        if self.root is None:
+            self.root = Node(nama, ipk)
+        else:
+            current = self.root
+            while current:
+                if nama < current.nama:
+                    if current.left is None:
+                        current.left = Node(nama, ipk)
+                        break
+                    else:
+                        current = current.left
+                elif nama > current.nama:
+                    if current.right is None:
+                        current.right = Node(nama, ipk)
+                        break
+                    else:
+                        current = current.right
+                else:
+                    break
+
+    def tampilkan_urut_nama(self):
+        self._tampilkan_urut_nama(self.root)
+
+    def _tampilkan_urut_nama(self, node):
+        if node:
+            self._tampilkan_urut_nama(node.left)
+            print(f"{node.nama} - {node.ipk}")
+            self._tampilkan_urut_nama(node.right)
+
+    def tampilkan_urut_ipk(self):
+        self._tampilkan_urut_ipk(self.root)
+
+    def _tampilkan_urut_ipk(self, node):
+        if node:
+            self._tampilkan_urut_ipk(node.left)
+            print(f"{node.nama} - {node.ipk}")
+            self._tampilkan_urut_ipk(node.right)
+
+# Main program
+tree = BinaryTree()
+
+while True:
+    print("Pilih Menu:")
+    print("1. Tambah Mahasiswa")
+    print("2. Tampilkan Urut Nama")
+    print("3. Tampilkan Urut IPK")
+    print("4. Keluar")
+
+    pilihan = int(input("Pilihan Anda: "))
+
+    if pilihan == 1:
+        nama = input("Masukkan Nama: ")
+        ipk = float(input("Masukkan IPK: "))
+        tree.tambah_mahasiswa(nama, ipk)
+        print("Data berhasil ditambahkan!")
+
+    elif pilihan == 2:
+        print("Daftar Mahasiswa:")
+        tree.tampilkan_urut_nama()
+
+    elif pilihan == 3:
+        print("Daftar Mahasiswa:")
+        tree.tampilkan_urut_ipk()
+
+    elif pilihan == 4:
+        break
+
+    else:
+        print("Pilihan tidak valid. Silakan coba lagi.")
