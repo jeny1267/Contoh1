@@ -70,3 +70,43 @@ while True:
 
     else:
         print("Pilihan tidak valid. Silakan coba lagi.")
+
+
+
+
+
+
+
+
+
+Buatlah sebuah program menggunakan struktur data Binary Tree untuk menyimpan data Mahasiswa yang memiliki 2 atribut, yaitu nama dan ipk. Program memiliki fungsi untuk menambah data dan menampilkan data. Data dapat ditampilkan urut berdasarkan nama atau urut berdasarkan IPK.
+
+Contoh Penambahan Data:
+Pilih Menu:
+1. Tambah Mahasiswa
+2. Tampilkan Urut Nama
+3. Tampilkan Urut IPK
+Pilihan Anda: 1
+Masukkan Nama: Agus
+Masukkan IPK: 2.75
+Data berhasil ditambahkan!
+
+Contoh menampilkan data urut berdasarkan nama:
+Pilih Menu:
+1. Tambah Mahasiswa
+2. Tampilkan Urut Nama
+3. Tampilkan Urut IPK
+Pilihan Anda: 2
+Daftar Mahasiswa:
+Agus - 2.75
+Chandra - 2.5
+
+Contoh menampilkan data urut berdasarkan IPK:
+Pilih Menu:
+1. Tambah Mahasiswa
+2. Tampilkan Urut Nama
+3. Tampilkan Urut IPK
+Pilihan Anda: 3
+Daftar Mahasiswa:
+Chandra - 2.5
+Agus - 2.75
