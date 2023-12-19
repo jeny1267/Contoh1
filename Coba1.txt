@@ -110,3 +110,64 @@ Pilihan Anda: 3
 Daftar Mahasiswa:
 Chandra - 2.5
 Agus - 2.75
+
+
+
+
+
+class Node:
+    def __init__(self, nama, ipk):
+        self.nama = nama
+        self.ipk = ipk
+        self.left = None
+        self.right = None
+
+def tambah_mahasiswa(root, nama, ipk):
+    if root is None:
+        return Node(nama, ipk)
+    else:
+        if nama < root.nama:
+            root.left = tambah_mahasiswa(root.left, nama, ipk)
+        else:
+            root.right = tambah_mahasiswa(root.right, nama, ipk)
+    return root
+
+def tampilkan_nama(root):
+    if root:
+        tampilkan_nama(root.left)
+        print(root.nama, "-", root.ipk)
+        tampilkan_nama(root.right)
+
+def tampilkan_ipk(root):
+    if root:
+        tampilkan_ipk(root.left)
+        print(root.nama, "-", root.ipk)
+        tampilkan_ipk(root.right)
+
+root = None
+
+while True:
+    print("Pilih Menu:")
+    print("1. Tambah Mahasiswa")
+    print("2. Tampilkan Urut Nama")
+    print("3. Tampilkan Urut IPK")
+    pilihan = int(input("Pilihan Anda: "))
+
+    if pilihan == 1:
+        nama = input("Masukkan Nama: ")
+        ipk = float(input("Masukkan IPK: "))
+        root = tambah_mahasiswa(root, nama, ipk)
+        print("Data berhasil ditambahkan!")
+
+    elif pilihan == 2:
+        print("Daftar Mahasiswa:")
+        tampilkan_nama(root)
+
+    elif pilihan == 3:
+        print("Daftar Mahasiswa:")
+        tampilkan_ipk(root)
+
+    else:
+        print("Pilihan tidak valid!")
+
+
